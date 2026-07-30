@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body text-ink-900 bg-paper antialiased;
+}
+
+::selection {
+  background: #e8c766;
+  color: #0a1628;
+}
+
+*:focus-visible {
+  outline: 2px solid #c9a338;
+  outline-offset: 2px;
+}
+
+/* ---------- Reusable design primitives ---------- */
+
+.eyebrow {
+  @apply font-mono text-xs tracking-[0.18em] uppercase text-gold-600;
+}
+
+.section-pad {
+  @apply px-6 md:px-10 lg:px-16;
+}
+
+.container-page {
+  @apply max-w-7xl mx-auto;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full font-body font-semibold text-sm px-6 py-3 transition-all duration-200;
+}
+
+.btn-gold {
+  @apply btn bg-gold-500 text-navy-950 hover:bg-gold-400 hover:shadow-gold hover:-translate-y-0.5;
+}
+
+.btn-outline {
+  @apply btn border border-white/25 text-white hover:bg-white/10 hover:-translate-y-0.5;
+}
+
+.btn-outline-dark {
+  @apply btn border border-navy-900/15 text-navy-900 hover:bg-navy-900/5 hover:-translate-y-0.5;
+}
+
+.btn-navy {
+  @apply btn bg-navy-900 text-white hover:bg-navy-800 hover:-translate-y-0.5;
+}
+
+.card {
+  @apply bg-white rounded-2xl border border-ink-900/[0.06] shadow-card transition-all duration-300;
+}
+
+.card-hover {
+  @apply hover:shadow-cardHover hover:-translate-y-1;
+}
+
+.glass-dark {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.stat-number {
+  @apply font-display font-semibold text-4xl md:text-5xl tabular-nums;
+}
+
+.reveal {
+  animation: rise 0.6s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.divider-gold {
+  height: 3px;
+  width: 56px;
+  background: linear-gradient(90deg, #c9a338, #e8c766);
+  border-radius: 999px;
+}
+
+.badge-pill {
+  @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold font-mono tracking-wide;
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #eef0f4 25%, #f7f8fa 37%, #eef0f4 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* Scrollbar (subtle, institutional) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d8dce4; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #c3c9d4; }
