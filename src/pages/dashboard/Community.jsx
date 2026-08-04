@@ -1,5 +1,6 @@
 import { useApp } from '../../context/AppContext.jsx'
-import { galleryImages } from '../../data/mockData.js'
+import { trainingPhotos, dutyPhotos, leadership, updates } from '../../data/mockData.js'
+import { GalleryPhotoCard } from '../../components/Cards.jsx'
 
 export default function Community() {
   const { currentUser, db } = useApp()
@@ -9,6 +10,43 @@ export default function Community() {
     <div>
       <h1 className="font-display text-2xl md:text-3xl font-semibold text-navy-950 mb-1">Vanguard community</h1>
       <p className="text-sm text-ink-500 mb-6">Every student who has joined SAV, ranked by integrity points earned through courses, campaigns and the pledge.</p>
+
+      <div className="eyebrow mb-4">Leadership</div>
+      <div className="space-y-6 mb-10">
+        {leadership.map((group) => (
+          <div key={group.category}>
+            <div className="text-xs font-mono uppercase tracking-wide text-ink-500 mb-2">{group.category}</div>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {group.members.map((p) => (
+                <div key={p.id} className="card p-4 flex items-center gap-3">
+                  {p.photo ? (
+                    <img src={p.photo} alt={p.role} className="w-16 h-16 rounded-lg object-cover shrink-0" />
+                  ) : (
+                    <div className="w-16 h-16 rounded-lg bg-navy-900/5 flex items-center justify-center shrink-0 text-ink-500 text-[9px] text-center px-1.5">Photo coming soon</div>
+                  )}
+                  <div>
+                    <div className="font-display font-semibold text-navy-950 text-sm">{p.name || 'Name to be added'}</div>
+                    <div className="text-[11px] text-gold-600 font-mono uppercase mt-1">{p.role}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="eyebrow mb-4">Information panel — Vanguard updates</div>
+      <div className="space-y-3 mb-10">
+        {updates.map((u) => (
+          <div key={u.id} className="card p-4">
+            <div className="flex justify-between items-baseline gap-3 mb-1">
+              <div className="font-display font-semibold text-navy-950 text-sm">{u.title}</div>
+              <span className="text-xs font-mono text-ink-500 shrink-0">{u.date}</span>
+            </div>
+            <p className="text-sm text-ink-500">{u.body}</p>
+          </div>
+        ))}
+      </div>
 
       <div className="card overflow-x-auto mb-10">
         <table className="w-full text-sm">
@@ -38,17 +76,15 @@ export default function Community() {
         </table>
       </div>
 
-      <h2 className="font-display font-semibold text-navy-950 mb-4">Campaigns in action</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {galleryImages.map((img, i) => (
-          <div key={i} className="relative rounded-xl overflow-hidden aspect-square group">
-            <img src={img.url} alt={img.caption} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
-            <span className="absolute bottom-2 left-2 right-2 text-white text-[11px] font-medium leading-snug">{img.caption}</span>
-          </div>
-        ))}
+      <div className="eyebrow mb-4">Fitness & road drills</div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+        {trainingPhotos.slice(0, 8).map((img, i) => <GalleryPhotoCard key={i} image={img} aspect="aspect-square" />)}
       </div>
-      <p className="text-xs text-ink-500 mt-3">Illustrative campus photography. Credits: {galleryImages.map((i) => i.credit).join(' · ')}.</p>
+
+      <div className="eyebrow mb-4">ICPC SAV Drills Memories</div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {dutyPhotos.slice(0, 8).map((img, i) => <GalleryPhotoCard key={i} image={img} aspect="aspect-square" />)}
+      </div>
     </div>
   )
 }

@@ -39,6 +39,7 @@ import AdminMembers from './pages/admin/AdminMembers.jsx'
 import AdminReports from './pages/admin/AdminReports.jsx'
 import AdminCampaigns from './pages/admin/AdminCampaigns.jsx'
 import AdminEvents from './pages/admin/AdminEvents.jsx'
+import Actu from './pages/Actu.jsx'
 
 function PublicLayout({ children }) {
   return (
@@ -56,6 +57,7 @@ export default function App() {
       {/* Public site */}
       <Route path="/" element={<PublicLayout><Landing /></PublicLayout>} />
       <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
+      <Route path="/actu" element={<PublicLayout><Actu /></PublicLayout>} />
       <Route path="/education" element={<PublicLayout><Education /></PublicLayout>} />
       <Route path="/academy" element={<PublicLayout><Academy /></PublicLayout>} />
       <Route path="/academy/:id" element={<PublicLayout><CourseDetail /></PublicLayout>} />

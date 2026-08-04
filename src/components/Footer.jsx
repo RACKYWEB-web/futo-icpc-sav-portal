@@ -14,6 +14,7 @@ export default function Footer() {
           <div className="eyebrow text-white/40 mb-4">Quick links</div>
           <ul className="space-y-2.5 text-sm">
             <li><Link to="/about" className="hover:text-white">About</Link></li>
+            <li><Link to="/actu" className="hover:text-white">ACTU</Link></li>
             <li><Link to="/resources" className="hover:text-white">Resources</Link></li>
             <li><Link to="/academy" className="hover:text-white">Courses</Link></li>
             <li><Link to="/campaigns" className="hover:text-white">Campaigns</Link></li>
@@ -41,6 +42,13 @@ export default function Footer() {
         <div className="container-page section-pad py-6 flex flex-col sm:flex-row gap-2 justify-between text-xs text-white/40">
           <span>&copy; {new Date().getFullYear()} FUTO ICPC/SAV Student Vanguard. All rights reserved.</span>
           <span>Federal University of Technology, Owerri</span>
+        </div>
+        <div className="container-page section-pad pb-6 flex justify-center">
+          <span className="inline-flex items-center gap-2.5 text-[11px] font-mono uppercase tracking-[0.16em] text-gold-400/70">
+            <span className="w-1 h-1 rounded-full bg-gold-400/60" />
+            Portal crafted by Operation Edward Prince — Class of 2029
+            <span className="w-1 h-1 rounded-full bg-gold-400/60" />
+          </span>
         </div>
       </div>
     </footer>

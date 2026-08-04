@@ -1,3 +1,8 @@
+// Centralized image path helper — respects Vite's base config (vite.config.js
+// sets base: '/futo-icpc-sav-portal/'), and every real photo lives in
+// public/images/gallery/, so every image reference below goes through this.
+const assetPath = (path) => `${import.meta.env.BASE_URL}images/gallery/${path}`
+
 export const stats = [
   { label: 'Vanguard Members', value: 1240, suffix: '+' },
   { label: 'Awareness Campaigns', value: 36 },
@@ -103,7 +108,7 @@ export const campaigns = [
     date: 'Ongoing',
     location: 'Main Campus',
     participants: 412,
-    image: 'https://images.unsplash.com/photo-1549057446-9f5c6ac91a04?w=900&q=80&auto=format&fit=crop',
+    image: assetPath('drill-04.jpg'),
   },
   {
     id: 'camp-2',
@@ -113,7 +118,7 @@ export const campaigns = [
     date: 'Sept 14–18',
     location: 'Convocation Square',
     participants: 680,
-    image: 'https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?w=900&q=80&auto=format&fit=crop',
+    image: assetPath('drill-10.jpg'),
   },
   {
     id: 'camp-3',
@@ -123,27 +128,161 @@ export const campaigns = [
     date: 'Before exams, each semester',
     location: 'All Faculties',
     participants: 305,
-    image: 'https://images.unsplash.com/photo-1632215861513-130b66fe97f4?w=900&q=80&auto=format&fit=crop',
+    image: assetPath('drill-16.jpg'),
   },
   {
     id: 'camp-4',
-    title: 'Clean Campus Campaign',
-    description: 'Connecting environmental responsibility with transparency in how campus resources are managed.',
-    objectives: ['Community clean-up exercises', 'Awareness on resource accountability', 'Student volunteer drive'],
-    date: 'Monthly',
-    location: 'Hostels & Faculties',
+    title: 'Corruption Awareness Road Drill',
+    description: 'Early-morning road drills and fitness formations that build the discipline and unity behind the Vanguard\u2019s awareness walks.',
+    objectives: ['Weekly fitness and formation drills', 'Build team discipline and unity', 'Prepare for campus awareness walks'],
+    date: 'Weekly',
+    location: 'FUTO Campus Roads',
     participants: 220,
-    image: 'https://images.unsplash.com/photo-1546525848-3ce03ca516f6?w=900&q=80&auto=format&fit=crop',
+    image: assetPath('drill-06.jpg'),
   },
 ]
 
-// Illustrative campus/community photography (free-license Unsplash photos, credited).
-// These stand in for real chapter event photography — swap in your own before launch.
-export const galleryImages = [
-  { url: 'https://images.unsplash.com/photo-1549057446-9f5c6ac91a04?w=1000&q=80&auto=format&fit=crop', caption: 'Students walking together on an awareness drive', credit: 'Eliott Reyna / Unsplash' },
-  { url: 'https://images.unsplash.com/photo-1632215861513-130b66fe97f4?w=1000&q=80&auto=format&fit=crop', caption: 'Community engagement and sensitization', credit: 'Emmanuel Ikwuegbu / Unsplash' },
-  { url: 'https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?w=1000&q=80&auto=format&fit=crop', caption: 'Campus life at a Nigerian university', credit: 'Nqobile Vundla / Unsplash' },
-  { url: 'https://images.unsplash.com/photo-1546525848-3ce03ca516f6?w=1000&q=80&auto=format&fit=crop', caption: 'A student on campus', credit: 'Mubarak Showole / Unsplash' },
+// Real FUTO ICPC/SAV photography, compressed for the web.
+// All files live in public/images/gallery/.
+
+export const trainingPhotos = [
+  { url: assetPath('drill-04.jpg'), caption: 'Members on a morning road drill' },
+  { url: assetPath('drill-11.jpg'), caption: 'Unity circle exercise' },
+  { url: assetPath('drill-03.jpg'), caption: 'Squat drills during fitness training' },
+  { url: assetPath('drill-16.jpg'), caption: 'Road march formation' },
+  { url: assetPath('drill-07.jpg'), caption: 'Group fitness training' },
+  { url: assetPath('drill-14.jpg'), caption: 'Arm-raise fitness drill' },
+  { url: assetPath('drill-02.jpg'), caption: 'Stretching before a session' },
+  { url: assetPath('drill-17.jpg'), caption: 'Sunrise fitness session' },
+  { url: assetPath('drill-05.jpg'), caption: 'Road drill in formation' },
+  { url: assetPath('drill-12.jpg'), caption: 'Team unity circle' },
+  { url: assetPath('drill-08.jpg'), caption: 'Road drill formation' },
+  { url: assetPath('drill-13.jpg'), caption: 'Rest break during training' },
+  { url: assetPath('drill-01.jpg'), caption: 'Cool-down after a training drill' },
+  { url: assetPath('drill-09.jpg'), caption: 'Members on a road exercise' },
+  { url: assetPath('drill-15.jpg'), caption: 'Fitness formation exercise' },
+  { url: assetPath('drill-18.jpg'), caption: 'Group fitness training under the trees' },
+]
+
+// ICPC SAV memories — meetings, convocation, courtesy visits, parades and marches.
+export const dutyPhotos = [
+  { url: assetPath('executives_02.jpg'), caption: 'At the FUTO guest house' },
+  { url: assetPath('memory_03.jpeg'), caption: 'honorable agent (name)' },
+  { url: assetPath('with-flag.jpg'), caption: 'Command match with our banner' },
+  { url: assetPath('roged-sav.jpg'), caption: 'Two of our officers on ground' },
+  { url: assetPath('drill-16.jpg'), caption: 'Command lineup on the parade ground' },
+  { url: assetPath('sav-family_02.jpeg'), caption: 'SAV family gathering' },
+  { url: assetPath('generals_01.jpeg'), caption: 'Group photo after a meeting' },
+  { url: assetPath('inducted.jpg'), caption: 'at futo convocation' },
+  { url: assetPath('aware-sav.jpg'), caption: 'SAV on duty for shunning corruption' },
+  { url: assetPath('legal-unit.jpg'), caption: 'gallant officer' },
+  { url: assetPath('memory_02.jpeg'), caption: 'OPERATION Skemp' },
+]
+
+// Combined feed — used where a single mixed gallery makes sense.
+export const galleryImages = [...trainingPhotos, ...dutyPhotos]
+
+// Community memories — casual, everyday moments of the SAV family together.
+// Kept separate from dutyPhotos/trainingPhotos so this set only shows up in
+// the Memories section, not in the "Students on the ground" strip.
+export const communityMemories = [
+  { url: assetPath('sav-family.jpeg'), caption: 'The SAV family, together' },
+  { url: assetPath('generals_01.jpeg'), caption: 'The team in formation' },
+  { url: assetPath('memories_07.jpeg'), caption: 'Warm-up stretches before drill' },
+  { url: assetPath('gallant-sav.jpeg'), caption: 'Comparing notes in the field' },
+  { url: assetPath('memory_01.jpeg'), caption: 'Leading the morning session' },
+  { url: assetPath('sav-family_02.jpeg'), caption: 'Members after a session together' },
+  { url: assetPath('memories_08.jpeg'), caption: 'A quiet moment between drills' },
+  { url: assetPath('memory_03.jpeg'), caption: 'On duty and ready' },
+  { url: assetPath('sav-family_03.jpeg'), caption: 'Three of the family, one mission' },
+  { url: assetPath('executives_02.jpg'), caption: 'SAV with ICPC state' },
+]
+
+// A short, honest explainer for the top of the site — what ICPC is nationally,
+// and what the FUTO chapter (the Anti-Corruption & Transparency Unit) does locally.
+export const aboutUnit = {
+  eyebrow: 'Who we are',
+  title: 'The Anti-Corruption & Transparency Unit at FUTO',
+  icpcBlurb: 'The Independent Corrupt Practices and Other Related Offences Commission (ICPC) is Nigeria\u2019s national anti-corruption agency, established by the ICPC Act of 2000. Its mandate covers preventing corruption, educating the public, and enforcing anti-corruption laws.',
+  savBlurb: 'FUTO ICPC/SAV is the student-run Anti-Corruption and Transparency Unit at the Federal University of Technology, Owerri — a campus vanguard that carries that same mission into student life through education, drills, campaigns, monitoring and a safe reporting channel. It is a student initiative inspired by ICPC\u2019s mandate, not an official ICPC office.',
+}
+
+// Leadership roster, grouped by unit. Real names/photos are filled in as they're
+// confirmed — everything else stays an honest placeholder rather than a guess.
+export const leadership = [
+  {
+    category: 'Executive',
+    members: [
+      { id: 'chairman', role: 'Chairman — 001 of the Vanguard', name: 'Executive Council Chair', photo: assetPath('executives.jpg') },
+      { id: 'cmo', role: 'Chief Monitoring Officer (CMO)', name: '', photo: null },
+      { id: 'cio', role: 'Chief Information Officer (CIO)', name: 'Media & Communications Lead', photo: assetPath('aware-sav.jpg') },
+      { id: 'clo', role: 'Chief Legal Officer (CLO)', name: 'SAV Legal officer', photo: assetPath('induction-ceremony.jpg') },
+    ],
+  },
+  {
+    category: 'Legal Unit',
+    members: [
+      { id: 'legal-1', role: 'Legal Unit', name: 'Legal & Compliance Team', photo: assetPath('legal-unit.jpg') },
+    ],
+  },
+  {
+    category: 'Past EXCOs',
+    members: [
+      { id: 'past-excos', role: 'Past Executive Council', name: 'Past EXCOs', photo: assetPath('executives.jpg') },
+    ],
+  },
+  {
+    category: 'Agents',
+    members: [
+      { id: 'agents', role: 'Field Agents', name: 'Field Operation Team', photo: assetPath('active-sav.jpg') },
+    ],
+  },
+]
+
+// Generals, grouped by the year set they served — each set gets its own row of
+// cards. Add more member slots or more year sets any time; these are placeholders
+// until real names/photos come in.
+export const generalsByYear = [
+  {
+    year: '2022 Set',
+    members: [
+      { id: 'gen-2022-1', name: '', photo: null },
+      { id: 'gen-2022-2', name: '', photo: null },
+      { id: 'gen-2022-3', name: '', photo: null },
+    ],
+  },
+  {
+    year: '2023 Set',
+    members: [
+      { id: 'gen-2023-1', name: '', photo: null },
+      { id: 'gen-2023-2', name: '', photo: null },
+      { id: 'gen-2023-3', name: '', photo: null },
+    ],
+  },
+  {
+    year: '2024 Set',
+    members: [
+      { id: 'gen-2024-1', name: '', photo: null },
+      { id: 'gen-2024-2', name: '', photo: null },
+      { id: 'gen-2024-3', name: '', photo: null },
+    ],
+  },
+  {
+    year: '2025 Set',
+    members: [
+      { id: 'gen-2025-1', name: '', photo: null },
+      { id: 'gen-2025-2', name: '', photo: null },
+      { id: 'gen-2025-3', name: '', photo: null },
+    ],
+  },
+]
+
+// Information panel — a running feed of Vanguard news and happenings.
+// These are placeholder/example entries; replace with real dated announcements.
+export const updates = [
+  { id: 'u1', title: 'Welcome to new members', date: 'Sample entry', body: 'Replace this with a real announcement — e.g. a welcome note for students who just joined the Vanguard.' },
+  { id: 'u2', title: 'Upcoming road drill', date: 'Sample entry', body: 'Replace this with the date, time and meeting point for the next scheduled drill.' },
+  { id: 'u3', title: 'Leadership photos coming soon', date: 'Sample entry', body: 'Chairman, CIO and CLO portraits will be added here once supplied.' },
 ]
 
 export const events = [

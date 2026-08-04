@@ -6,6 +6,7 @@ import { useApp } from '../context/AppContext.jsx'
 const links = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
+  { to: '/actu', label: 'ACTU' },
   { to: '/education', label: 'Anti-Corruption' },
   { to: '/resources', label: 'Resources' },
   { to: '/campaigns', label: 'Campaigns' },
@@ -29,14 +30,14 @@ export default function Navbar() {
   useEffect(() => { setOpen(false) }, [navigate])
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_1px_0_rgba(10,22,40,0.06)]' : 'bg-white/70 backdrop-blur-sm'}`}>
+    <header className={`sticky top-0 z-50 border-b transition-all duration-300 ${scrolled ? 'bg-white/90 border-ink-900/[0.08] backdrop-blur-xl shadow-[0_8px_30px_rgba(10,22,40,0.06)]' : 'bg-white/70 border-transparent backdrop-blur-sm'}`}>
       <div className="container-page section-pad flex items-center justify-between h-16">
         <Link to="/" aria-label="FUTO ICPC/SAV home"><Logo /></Link>
 
-        <nav className="hidden lg:flex items-center gap-6" aria-label="Primary">
+        <nav className="hidden lg:flex items-center gap-5" aria-label="Primary">
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className={({ isActive }) =>
-              `text-sm font-medium transition-colors ${isActive ? 'text-navy-900' : 'text-ink-700 hover:text-navy-900'}`
+              `text-sm font-medium transition-colors whitespace-nowrap ${isActive ? 'text-navy-900' : 'text-ink-700 hover:text-navy-900'}`
             }>{l.label}</NavLink>
           ))}
         </nav>
@@ -64,7 +65,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${open ? 'max-h-[560px]' : 'max-h-0'}`}>
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${open ? 'max-h-[640px]' : 'max-h-0'}`}>
         <nav className="flex flex-col gap-1 px-6 pb-6" aria-label="Mobile">
           {links.map((l, i) => (
             <NavLink key={l.to} to={l.to} style={{ transitionDelay: `${i * 30}ms` }}

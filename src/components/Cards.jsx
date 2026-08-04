@@ -1,12 +1,32 @@
 import { Link } from 'react-router-dom'
 
-export function SectionHeader({ eyebrow, title, sub, center = false }) {
+export function SectionHeader({ eyebrow, title, sub, center = false, light = false }) {
   return (
     <div className={`max-w-2xl ${center ? 'mx-auto text-center' : ''} mb-10`}>
-      {eyebrow && <div className="eyebrow mb-3">{eyebrow}</div>}
-      <h2 className="font-display text-3xl md:text-4xl font-semibold text-navy-950 leading-tight">{title}</h2>
-      {sub && <p className="mt-3 text-ink-500 text-[15px] leading-relaxed">{sub}</p>}
+      {eyebrow && <div className={`eyebrow mb-3 ${light ? 'text-gold-300' : ''}`}>{eyebrow}</div>}
+      <h2 className={`font-display text-3xl md:text-4xl font-semibold leading-tight ${light ? 'text-white' : 'text-navy-950'}`}>{title}</h2>
+      {sub && <p className={`mt-3 text-[15px] leading-relaxed ${light ? 'text-white/60' : 'text-ink-500'}`}>{sub}</p>}
       <div className={`divider-gold mt-5 ${center ? 'mx-auto' : ''}`} />
+    </div>
+  )
+}
+
+export function GalleryPhotoCard({ image, className = '', aspect = 'aspect-[5/4]' }) {
+  return (
+    <div className={`group relative overflow-hidden rounded-[1.35rem] border border-navy-900/[0.08] bg-white/70 p-1 shadow-[0_20px_45px_-28px_rgba(15,23,42,0.45)] ${aspect} ${className}`}>
+      <div className="relative h-full w-full overflow-hidden rounded-[1.15rem]">
+        <img
+          src={image.url}
+          alt={image.caption}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/15 to-transparent transition-opacity duration-300" />
+        <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-[1.15rem]" />
+        <span className="absolute bottom-3 left-3 right-3 text-white text-[11px] sm:text-xs font-medium leading-snug">
+          {image.caption}
+        </span>
+      </div>
     </div>
   )
 }

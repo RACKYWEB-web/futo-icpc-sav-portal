@@ -1,5 +1,9 @@
+// Force a clean provider remount when Fast Refresh updates this context module.
+// This prevents stale consumers from rendering outside the refreshed provider.
+/* @refresh reset */
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
-import { courses, campaigns, events } from '../data/mockData.js'
+import { courses, campaigns, events as staticEvents } from '../data/mockData.js'
+import { useSheetEvents } from '../data/useSheetEvents.js'
 
 const AppContext = createContext(null)
 const DB_KEY = 'futo_sav_db_v1'
@@ -78,6 +82,12 @@ let refCounter = 1000
 
 export function AppProvider({ children }) {
   const [db, setDb] = useState(loadDB)
+  const { events: sheetEvents, loading: eventsLoading, error: eventsError } = useSheetEvents()
+
+  // While the sheet is loading, or if it's briefly unreachable, fall back to
+  // the static demo events so the app never shows a blank screen. Once the
+  // sheet loads successfully, live data takes over everywhere automatically.
+  const events = (eventsLoading || eventsError) ? staticEvents : sheetEvents
 
   useEffect(() => {
     saveDB(db)
@@ -255,6 +265,8 @@ export function AppProvider({ children }) {
     courses,
     campaigns,
     events,
+    eventsLoading,
+    eventsError,
     register,
     login,
     logout,
