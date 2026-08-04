@@ -10,7 +10,7 @@ import Logo from "../components/Logo.jsx";
 const assetPath = (path) => `${import.meta.env.BASE_URL}images/gallery/${path}`
 
 const leadershipImages = [
-  { role: 'Chief Monitoring Officer', name: 'SAV CMO', image: assetPath('cmo-officer.jpg'), size: 'large' },
+  { role: 'Chief Monitoring Officer', name: 'OPERATION ofem-tonghai obase patrick', image: assetPath('cmo-officer.jpg'), size: 'large' },
   { role: 'Legal Unit', name: 'Barr. Dr. Prosecutor Owuna Joseph Monday', image: assetPath('legal-unit.jpg'), size: 'large' },
   { role: 'ICPC State Command', name: 'SAV Induction Ceremony', image: assetPath('induction-ceremony.jpg') },
   { role: 'Vanguard Executives', name: 'Current Executive Council', image: assetPath('executives.jpg') },

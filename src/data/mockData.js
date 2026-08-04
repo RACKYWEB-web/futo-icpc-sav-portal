@@ -4,10 +4,10 @@
 const assetPath = (path) => `${import.meta.env.BASE_URL}images/gallery/${path}`
 
 export const stats = [
-  { label: 'Vanguard Members', value: 1240, suffix: '+' },
-  { label: 'Awareness Campaigns', value: 36 },
-  { label: 'Academy Enrollments', value: 2870, suffix: '+' },
-  { label: 'Campus Events', value: 58 },
+  { label: 'Vanguard Members', value: 49, suffix: '+' },
+  { label: 'Awareness Campaigns', value: 12 },
+  { label: 'Academy Enrollments', value: 50, suffix: '+' },
+  { label: 'Campus Events', value: 8 },
 ]
 
 export const courses = [
@@ -215,8 +215,8 @@ export const leadership = [
     members: [
       { id: 'chairman', role: 'Chairman — 001 of the Vanguard', name: 'Executive Council Chair', photo: assetPath('executives.jpg') },
       { id: 'cmo', role: 'Chief Monitoring Officer (CMO)', name: '', photo: null },
-      { id: 'cio', role: 'Chief Information Officer (CIO)', name: 'Media & Communications Lead', photo: assetPath('aware-sav.jpg') },
-      { id: 'clo', role: 'Chief Legal Officer (CLO)', name: 'SAV Legal officer', photo: assetPath('induction-ceremony.jpg') },
+      { id: 'cio', role: 'Chief Investigation Officer (CIO)', name: 'Media & Communications Lead', photo: assetPath('aware-sav.jpg') },
+      { id: 'clo', role: 'Chief Legal Officer (CLO)', name: 'SAV Legal officer', photo: assetPath('legal-unit.jpg') },
     ],
   },
   {
